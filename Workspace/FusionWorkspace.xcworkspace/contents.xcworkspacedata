@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../TestApp/TestApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../FusionBase/FusionBase.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../FusionUI/FusionUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../CoreService/CoreService.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:CommonHeader"
+      name = "CommonHeader">
+      <FileRef
+         location = "group:CommonErrorCode.h">
+      </FileRef>
+      <FileRef
+         location = "group:CommonNotification.h">
+      </FileRef>
+      <FileRef
+         location = "group:SafeARC.h">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:../Enviroment/Enviroment.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../FusionCore/FusionCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../Utility/Utility.xcodeproj">
+   </FileRef>
+</Workspace>
