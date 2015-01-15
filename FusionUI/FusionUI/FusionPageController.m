@@ -27,7 +27,7 @@
     UIView              *_prevSnapView;
     UIView              *_prevMaskView;
     
-     __unsafe_unretained FusionPageNavigator *_navigator;
+    __unsafe_unretained FusionPageNavigator *_navigator;
 }
 @end
 
@@ -44,11 +44,11 @@
             _naviBarHidden = NO;
         }
         if (_naviBarHidden == NO) {
-            NSString *naviClass = [_pageConfig valueForKey:@"navi_class"];
-            if (naviClass == nil) {
-                _naviBar = [FusionNaviBar new];
+            NSDictionary *navibarInfo = [_pageConfig valueForKey:@"navibar"];
+            if ([navibarInfo valueForKey:@"class"] == nil) {
+                _naviBar = [[FusionNaviBar alloc] initWithConfig:navibarInfo];
             } else {
-                _naviBar = [NSClassFromString(naviClass) new];
+                _naviBar = [[NSClassFromString([navibarInfo valueForKey:@"class"]) alloc] initWithConfig:navibarInfo];
             }
             _naviBar.clipsToBounds = YES;
         }
@@ -225,23 +225,6 @@
     
 }
 
-#pragma NaviBar
-- (void)onNavigationLeftButtonClick:(id)sender {
-    
-}
-
-- (void)onNavigationRightButtonClick:(id)sender {
-    
-}
-
-#pragma UserTrack
-- (void)trackPageEnter {
-    
-}
-
-- (void)trackPageLeave {
-    
-}
 #pragma GestureRecognizer
 - (void)enableGestureRecognizer {
     for (UIGestureRecognizer *recognizer in [self.view gestureRecognizers]) {
@@ -317,12 +300,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     objc_removeAssociatedObjects(self);
     _navigator = nil;
-    SafeRelease(_manualAnime);
+    SafeRelease(_pageName);
+    SafeRelease(_pageNick);
+    SafeRelease(_callbackUrl);
+    SafeRelease(_pageConfig);
     SafeRelease(_prevSnapView);
     SafeRelease(_prevMaskView);
+    SafeRelease(_manualAnime);
     SafeRelease(_naviBar);
     SafeRelease(_tabBar);
-    SafeRelease(_pageConfig);
     SafeSuperDealloc(super);
 }
 @end

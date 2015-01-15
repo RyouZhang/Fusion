@@ -28,14 +28,6 @@
     NSTimeInterval      _startTimestamp;
     FusionNaviAnime     *_manualAnime;
 }
-#pragma mark Animation Delegate
-- (void)onNavigationLeftButtonClick:(id)sender;
-- (void)onNavigationRightButtonClick:(id)sender;
-
-#pragma UserTrack
-- (void)trackPageEnter;
-- (void)trackPageLeave;
-
 #pragma GestureRecognizer
 - (void)enableGestureRecognizer;
 - (void)disableGestureRecognizer;
