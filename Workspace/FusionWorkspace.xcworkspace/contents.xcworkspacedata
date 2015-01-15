@@ -10,9 +10,6 @@
    <FileRef
       location = "group:../FusionUI/FusionUI.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:../CoreService/CoreService.xcodeproj">
-   </FileRef>
    <Group
       location = "group:CommonHeader"
       name = "CommonHeader">
