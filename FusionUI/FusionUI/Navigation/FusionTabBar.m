@@ -36,7 +36,7 @@
     if (isAnime) {
         [UIView animateWithDuration:0.4
                          animations:^{
-                             [self setTransform:CGAffineTransformIdentity];
+                             [self setTransform:CGAffineTransformMakeTranslation(0, self.frame.size.height)];
                          } completion:^(BOOL finished) {
                          }];
     } else {
@@ -49,11 +49,11 @@
     if (isAnime) {
         [UIView animateWithDuration:0.4
                          animations:^{
-                             [self setTransform:CGAffineTransformMakeTranslation(0, self.frame.size.height)];
+                             [self setTransform:CGAffineTransformIdentity];
                          } completion:^(BOOL finished) {
                          }];
     } else {
-        [self setTransform:CGAffineTransformMakeTranslation(0, self.frame.size.height)];
+        [self setTransform:CGAffineTransformIdentity];
     }
 }
 
