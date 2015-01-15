@@ -25,7 +25,6 @@
             [_targetController setTabBar:tarbar];
             [_tabbarDic setValue:tarbar forKey:tabbarName];
         }
-        
         if (_currentController &&
             [_currentController getTabBar] &&
             [[_currentController getTabBar] isEqual:[_targetController getTabBar]]) {
@@ -36,6 +35,18 @@
                                         tarbar.frame.size.width,
                                         tarbar.frame.size.height)];
             [self.view addSubview:tarbar];
+            [UIView animateWithDuration:0.4
+                             animations:^{
+                                 [tarbar setTransform:CGAffineTransformIdentity];
+                             } completion:^(BOOL finished) {
+                             }];
+        } else {
+            FusionTabBar *tarbar = [_targetController getTabBar];
+            [UIView animateWithDuration:0.4
+                             animations:^{
+                                 [tarbar setTransform:CGAffineTransformIdentity];
+                             } completion:^(BOOL finished) {                                 
+                             }];
         }
     }
 }

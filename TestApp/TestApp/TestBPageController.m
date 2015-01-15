@@ -36,6 +36,17 @@
          forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     }
+    {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+        [button setFrame:CGRectMake(200, 200, 100, 100)];
+        [button setTitle:@"Hide" forState:UIControlStateNormal];
+        [button.layer setBorderWidth:1.0];
+        [button.layer setBorderColor:[UIColor redColor].CGColor];
+        [button addTarget:self
+                   action:@selector(onTapHideButton:)
+         forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
+    }
 }
 
 - (void)onTapButton:(id)sender {
@@ -54,5 +65,15 @@
     [message setNaviAnimeType:SlideR2L_NaviAnime];
     [message setIsDestory:YES];    
     [[self getNavigator] gotoPage:message];
+}
+
+- (void)onTapHideButton:(id)sender {
+    if (_tabBar) {
+        [UIView animateWithDuration:0.4
+                         animations:^{
+                             [_tabBar setTransform:CGAffineTransformMakeTranslation(0.0, _tabBar.frame.size.height)];
+                         } completion:^(BOOL finished) {
+                         }];
+    }
 }
 @end
