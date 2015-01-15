@@ -14,12 +14,16 @@
 @interface FusionTabBar : UIView {
 @protected
     NSDictionary    *_config;
-    
+    BOOL            _isHidden;
     __unsafe_unretained FusionPageNavigator *_navigator;
 }
 @property(assign, atomic)FusionPageNavigator *navigator;
+@property(assign, readonly)BOOL isHidden;
 
 - (id)initWithConfig:(NSDictionary *)config;
 
 - (NSString *)getTabbarName;
+
+- (void)hideTabbar:(BOOL)isAnime;
+- (void)showTabbar:(BOOL)isAnime;
 @end

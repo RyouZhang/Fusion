@@ -69,11 +69,10 @@
 
 - (void)onTapHideButton:(id)sender {
     if (_tabBar) {
-        [UIView animateWithDuration:0.4
-                         animations:^{
-                             [_tabBar setTransform:CGAffineTransformMakeTranslation(0.0, _tabBar.frame.size.height)];
-                         } completion:^(BOOL finished) {
-                         }];
+        if ([_tabBar isHidden] == NO)
+            [_tabBar hideTabbar:YES];
+        else
+            [_tabBar showTabbar:YES];
     }
 }
 @end

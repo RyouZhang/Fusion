@@ -11,6 +11,7 @@
 
 @implementation FusionTabBar
 @synthesize navigator = _navigator;
+@synthesize isHidden = _isHidden;
 - (id)initWithConfig:(NSDictionary *)config {
     self = [super init];
     if (self) {
@@ -28,6 +29,32 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+}
+
+- (void)hideTabbar:(BOOL)isAnime {
+    _isHidden = YES;
+    if (isAnime) {
+        [UIView animateWithDuration:0.4
+                         animations:^{
+                             [self setTransform:CGAffineTransformIdentity];
+                         } completion:^(BOOL finished) {
+                         }];
+    } else {
+        [self setTransform:CGAffineTransformMakeTranslation(0, self.frame.size.height)];
+    }
+}
+
+- (void)showTabbar:(BOOL)isAnime {
+    _isHidden = NO;
+    if (isAnime) {
+        [UIView animateWithDuration:0.4
+                         animations:^{
+                             [self setTransform:CGAffineTransformMakeTranslation(0, self.frame.size.height)];
+                         } completion:^(BOOL finished) {
+                         }];
+    } else {
+        [self setTransform:CGAffineTransformMakeTranslation(0, self.frame.size.height)];
+    }
 }
 
 - (void)dealloc {

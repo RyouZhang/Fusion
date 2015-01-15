@@ -35,18 +35,14 @@
                                         tarbar.frame.size.width,
                                         tarbar.frame.size.height)];
             [self.view addSubview:tarbar];
-            [UIView animateWithDuration:0.4
-                             animations:^{
-                                 [tarbar setTransform:CGAffineTransformIdentity];
-                             } completion:^(BOOL finished) {
-                             }];
+            if ([tarbar isHidden]) {
+                [tarbar showTabbar:YES];
+            }
         } else {
             FusionTabBar *tarbar = [_targetController getTabBar];
-            [UIView animateWithDuration:0.4
-                             animations:^{
-                                 [tarbar setTransform:CGAffineTransformIdentity];
-                             } completion:^(BOOL finished) {                                 
-                             }];
+            if ([tarbar isHidden]) {
+                [tarbar showTabbar:YES];
+            }
         }
     }
 }
