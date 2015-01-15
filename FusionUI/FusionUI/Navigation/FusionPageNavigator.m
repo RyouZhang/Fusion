@@ -135,14 +135,14 @@
     
     SafeRelease(_maskView);
     SafeRelease(_currentContentView);
-    SafeRelease(_currentController);
     SafeRelease(_targetContentView);
+    SafeRelease(_currentController);
     SafeRelease(_targetController);
+    SafeRelease(_containerView);
     
     SafeRelease(_waittingArray);
     SafeRelease(_tabbarPageDic);
-    SafeRelease(_tabbarDic);
-    
+    SafeRelease(_tabbarDic);    
     SafeRelease(_pageNickStack);
     SafeRelease(_pageDic);
     SafeSuperDealloc(super);

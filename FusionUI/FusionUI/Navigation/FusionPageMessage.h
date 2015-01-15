@@ -13,7 +13,6 @@
 @interface FusionPageMessage : FusionMessage {
 @private
     NSString    *_pageNick;
-    NSString    *_title;
     NSURL       *_callbackUrl;
     
     NSUInteger  _naviAnimeType;

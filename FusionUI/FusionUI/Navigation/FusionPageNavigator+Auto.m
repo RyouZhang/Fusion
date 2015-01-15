@@ -54,9 +54,11 @@
     if ([_targetController respondsToSelector:@selector(setPrevMaskView:)]) {
         [_targetController setPrevMaskView:nil];
     }
-    if (message.isDestory == NO) {
+    
+    if ([_targetController getNaviAnimeType] == No_NaviAnime) {
         [_targetController setNaviAnimeType:message.naviAnimeType];
-    } else if (_currentController) {
+    }    
+    if (message.isDestory && _currentController && message.naviAnimeType == No_NaviAnime) {
         [_targetController setNaviAnimeType:[_currentController getNaviAnimeType]];
     }
     
