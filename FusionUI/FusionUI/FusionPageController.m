@@ -8,8 +8,12 @@
 
 #import "FusionPageController.h"
 #import "Navigation/FusionPageNavigator.h"
+#import "Navigation/FusionPageNavigator+Manual.h"
 #import "Navigation/FusionNaviBar.h"
 #import "Navigation/FusionTabBar.h"
+#import "Navigation/Anime/FusionNaviAnimeHelper.h"
+#import "Navigation/Anime/FusionNaviAnime.h"
+#import "FusionPageMessage.h"
 #import "SafeARC.h"
 
 @interface FusionPageController() {
@@ -258,6 +262,55 @@
 }
 
 - (void)onTriggerPanGesture:(UIPanGestureRecognizer*)recognizer {
+    CGPoint pos = [recognizer locationInView:_navigator.view];
+    
+    switch ([recognizer state]) {
+        case UIGestureRecognizerStateBegan: {
+            if (_manualAnime) {
+                return;
+            }
+            _startPosition = pos;
+            _startTimestamp = [[NSDate date] timeIntervalSince1970];
+            NSURL *url = [self getCallbackUrl];
+            if (url == nil) {
+                return;
+            }
+            
+            NSInteger animeType = [self getNaviAnimeType];
+            if (animeType == No_NaviAnime) {
+                animeType = SlideR2L_NaviAnime;
+            }
+            [self.view endEditing:YES];
+            
+            FusionPageMessage *message = [[FusionPageMessage alloc] initWithURL:url];
+            [message setNaviAnimeType:animeType];
+            [message setNaviAnimeDirection:FusionNaviAnimeBackward];
+            
+            _manualAnime = [[self getNavigator] manualPoptoPage:message];
+            SafeRelease(message);
+        }
+            break;
+        case UIGestureRecognizerStateChanged: {
+            if (_manualAnime) {
+                NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+                CGFloat detal = now - _startTimestamp;
+                _speed = CGPointMake((pos.x - _startPosition.x)/detal, (pos.y - _startPosition.y)/detal);
+                [_manualAnime updateProcess:1.0 - pos.x / _navigator.view.frame.size.width];
+            }
+        }
+            break;
+        default: {
+            if (_manualAnime) {
+                if (fabs(_speed.x) > 400 || [_manualAnime process] < 0.5) {
+                    [_manualAnime forcePlay];
+                } else {
+                    [_manualAnime play];
+                }
+                _manualAnime = nil;
+            }
+        }
+            break;
+    }
 }
 
 - (void)dealloc {

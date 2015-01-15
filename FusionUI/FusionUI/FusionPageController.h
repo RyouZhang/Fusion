@@ -23,7 +23,7 @@
     FusionTabBar        *_tabBar;
 @private
 //for manual navi anime
-    CGFloat             _speed;
+    CGPoint             _speed;
     CGPoint             _startPosition;
     NSTimeInterval      _startTimestamp;
     FusionNaviAnime     *_manualAnime;

@@ -9,8 +9,6 @@
 #import "FusionPageNavigator.h"
 
 @interface FusionPageNavigator(Auto)
-+ (NSURL *)generateCallbackUrl:(UIViewController<IFusionPageProtocol>*)controller;
-
 - (void)openPage:(FusionPageMessage *)message;
 
 - (void)gotoPage:(FusionPageMessage *)message;

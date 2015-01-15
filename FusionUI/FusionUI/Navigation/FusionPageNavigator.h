@@ -108,4 +108,6 @@
 - (void)hideCurrentTabbarAnimated:(BOOL)animated;
 
 - (UIImage*)getPageSnapshot;
+
++ (NSURL *)generateCallbackUrl:(UIViewController<IFusionPageProtocol>*)controller;
 @end

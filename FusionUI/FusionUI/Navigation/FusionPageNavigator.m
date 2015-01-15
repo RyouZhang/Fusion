@@ -147,4 +147,11 @@
     SafeRelease(_pageDic);
     SafeSuperDealloc(super);
 }
+
++ (NSURL *)generateCallbackUrl:(UIViewController<IFusionPageProtocol>*)controller {
+    NSURL *url = [[NSURL alloc] initWithScheme:FusionScheme
+                                          host:FusionPageHost
+                                          path:[NSString stringWithFormat:@"/%@",[controller getPageNick]]];
+    return SafeAutoRelease(url);
+}
 @end

@@ -16,13 +16,6 @@
 #import "SafeARC.h"
 
 @implementation FusionPageNavigator(Auto)
-+ (NSURL *)generateCallbackUrl:(UIViewController<IFusionPageProtocol>*)controller {
-    NSURL *url = [[NSURL alloc] initWithScheme:FusionScheme
-                                          host:FusionPageHost
-                                          path:[NSString stringWithFormat:@"/%@",[controller getPageNick]]];
-    return SafeAutoRelease(url);
-}
-
 - (void)openPage:(FusionPageMessage *)message {
     if (message.naviAnimeDirection == FusionNaviAnimeForward) {
         [self gotoPage:message];
@@ -67,7 +60,7 @@
         [_targetController setNaviAnimeType:[_currentController getNaviAnimeType]];
     }
     
-    if (message.callbackUrl) {
+    if (message.callbackUrl && [_targetController getCallbackUrl] == nil) {
         [_targetController setCallbackUrl:message.callbackUrl];
     } else if (_currentController) {
         if (message.isDestory) {

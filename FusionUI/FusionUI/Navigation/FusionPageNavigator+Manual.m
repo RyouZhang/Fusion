@@ -9,6 +9,7 @@
 #import "FusionPageNavigator+Manual.h"
 #import "FusionPageNavigator+Internal.h"
 #import "FusionPageNavigator+NaviAnime.h"
+#import "FusionPageNavigator+Tab.h"
 #import "FusionNaviAnime.h"
 #import "FusionPageMessage.h"
 #import "Anime/FusionNaviAnimeHelper.h"
@@ -50,6 +51,18 @@
         [_targetController setPrevMaskView:nil];
     }
     [_targetController setNaviAnimeType:message.naviAnimeType];
+    
+    if (message.callbackUrl) {
+        [_targetController setCallbackUrl:message.callbackUrl];
+    } else if (_currentController) {
+        if (message.isDestory) {
+            [_targetController setCallbackUrl:[_currentController getCallbackUrl]];
+        } else {
+            [_targetController setCallbackUrl:[FusionPageNavigator generateCallbackUrl:_currentController]];
+        }
+    }
+    
+    [self processTabBarForPageController:_targetController];
     
     SafeRelease(_targetContentView)
     _targetContentView = SafeRetain([self createPageContentView:_targetController]);
@@ -102,7 +115,6 @@
         return nil;
     }
     
-    
     FusionNaviAnime *anime = [FusionNaviAnimeHelper createPageNaviAnime:message.naviAnimeType
                                                          animeDirection:FusionNaviAnimeBackward];
     if (anime == nil) {
@@ -118,6 +130,8 @@
         _targetController = nil;
         return nil;
     }
+    
+    [self processTabBarForPageController:_targetController];
     
     SafeRelease(_targetContentView)
     _targetContentView = SafeRetain([self createPageContentView:_targetController]);
