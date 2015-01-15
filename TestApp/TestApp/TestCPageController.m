@@ -25,6 +25,17 @@
          forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     }
+    {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+        [button setFrame:CGRectMake(100, 200, 100, 100)];
+        [button setTitle:@"D" forState:UIControlStateNormal];
+        [button.layer setBorderWidth:1.0];
+        [button.layer setBorderColor:[UIColor redColor].CGColor];
+        [button addTarget:self
+                   action:@selector(onTapDButton:)
+         forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
+    }
 }
 
 - (void)onTapButton:(id)sender {
@@ -32,5 +43,15 @@
     [message setNaviAnimeType:[self getNaviAnimeType]];
     [message setNaviAnimeDirection:FusionNaviAnimeBackward];
     [[self getNavigator] poptoPage:message];
+}
+
+- (void)onTapDButton:(id)sender {
+    FusionPageMessage *message = [[FusionPageMessage alloc] initWithPageName:@"TestPageD"
+                                                                    pageNick:nil
+                                                                     command:@"init"
+                                                                        args:nil
+                                                                    callback:nil];
+    [message setNaviAnimeType:SlideB2T_NaviAnime];
+    [[self getNavigator] gotoPage:message];
 }
 @end

@@ -107,10 +107,12 @@
     [_maskView removeFromSuperview];
     SafeRelease(_maskView);
     
-    if (_currentController) {
+    if (_currentController && [_currentController respondsToSelector:@selector(exitAnimeFinish)]) {
         [_currentController exitAnimeFinish];
     }
-    [_targetController enterAnimeFinish];
+    if ([_targetController respondsToSelector:@selector(enterAnimeFinish)]) {
+        [_targetController enterAnimeFinish];
+    }
     
     [_currentContentView removeFromSuperview];
     SafeRelease(_currentContentView);

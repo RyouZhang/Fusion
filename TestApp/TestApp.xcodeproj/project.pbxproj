@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2017507D1A6507CB008D1007 /* TestCPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2017507C1A6507CB008D1007 /* TestCPageController.m */; };
 		201D31D61A66374C00C53B0F /* TestTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D31D51A66374C00C53B0F /* TestTabBar.m */; };
+		205979911A678DCD00F2BF7E /* TestDPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205979901A678DCD00F2BF7E /* TestDPageController.m */; };
 		20969D9A1A64019F00E9C377 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20969D991A64019F00E9C377 /* main.m */; };
 		20969D9D1A64019F00E9C377 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20969D9C1A64019F00E9C377 /* AppDelegate.m */; };
 		20969DA51A64019F00E9C377 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20969DA41A64019F00E9C377 /* Images.xcassets */; };
@@ -25,6 +26,8 @@
 		2017507C1A6507CB008D1007 /* TestCPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCPageController.m; sourceTree = "<group>"; };
 		201D31D41A66374C00C53B0F /* TestTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTabBar.h; sourceTree = "<group>"; };
 		201D31D51A66374C00C53B0F /* TestTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTabBar.m; sourceTree = "<group>"; };
+		2059798F1A678DCD00F2BF7E /* TestDPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDPageController.h; sourceTree = "<group>"; };
+		205979901A678DCD00F2BF7E /* TestDPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDPageController.m; sourceTree = "<group>"; };
 		20969D941A64019F00E9C377 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20969D981A64019F00E9C377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20969D991A64019F00E9C377 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				2017507C1A6507CB008D1007 /* TestCPageController.m */,
 				201D31D41A66374C00C53B0F /* TestTabBar.h */,
 				201D31D51A66374C00C53B0F /* TestTabBar.m */,
+				2059798F1A678DCD00F2BF7E /* TestDPageController.h */,
+				205979901A678DCD00F2BF7E /* TestDPageController.m */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				20969DC41A64038300E9C377 /* TestAdapter.m in Sources */,
 				20969D9D1A64019F00E9C377 /* AppDelegate.m in Sources */,
 				20969DCA1A64138100E9C377 /* TestBPageController.m in Sources */,
+				205979911A678DCD00F2BF7E /* TestDPageController.m in Sources */,
 				20969DC71A64048A00E9C377 /* TestAPageController.m in Sources */,
 				20969D9A1A64019F00E9C377 /* main.m in Sources */,
 			);

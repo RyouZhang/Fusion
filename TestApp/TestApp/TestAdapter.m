@@ -44,6 +44,11 @@ static TestAdapter *_TestAdapter_Instance = nil;
                  @"class": @"TestCPageController",
                  @"title": @"Hello world"
                  };
+    } else if ([pageName isEqualToString:@"TestPageD"]) {
+        return @{
+                 @"pageName": @"TestPageD",
+                 @"class": @"TestDPageController"
+                 };
     }
     return nil;
 }

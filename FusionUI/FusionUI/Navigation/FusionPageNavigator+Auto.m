@@ -157,14 +157,22 @@
     [_targetContentView setFrame:CGRectMake(0.0, 0.0, _containerView.frame.size.width, _containerView.frame.size.height)];
     [_containerView addSubview:_targetContentView];
     
-    if ([_currentController getPrevSnapView]) {
-        [[_currentController getPrevSnapView] removeFromSuperview];
+    UIView *prevSnapView = nil;
+    UIView *prevMaskView = nil;
+    if ([_currentController respondsToSelector:@selector(getPrevSnapView)]) {
+        prevSnapView = [_currentController getPrevSnapView];
+        if (prevSnapView) {
+            [prevSnapView removeFromSuperview];
+        }
     }
-    if ([_currentController getPrevMaskView]) {
-        [[_currentController getPrevMaskView] removeFromSuperview];
+    if ([_currentController respondsToSelector:@selector(getPrevMaskView)]) {
+        prevMaskView = [_currentController getPrevMaskView];
+        if (prevMaskView) {
+            [prevMaskView removeFromSuperview];
+        }
     }
     SafeRelease(_maskView);
-    _maskView = SafeRetain([_currentController getPrevMaskView]);
+    _maskView = SafeRetain(prevMaskView);
     
     [_containerView insertSubview:_maskView belowSubview:_currentContentView];
     [_containerView sendSubviewToBack:_targetContentView];
@@ -174,10 +182,12 @@
     
     FusionNaviAnime *anime = [FusionNaviAnimeHelper createPageNaviAnime:message.naviAnimeType
                                                          animeDirection:FusionNaviAnimeBackward];
-    if (_currentController) {
+    if (_currentController && [_currentController respondsToSelector:@selector(exitAnimeStart)]) {
         [_currentController exitAnimeStart];
     }
-    [_targetController enterAnimeStart];
+    if ([_targetController respondsToSelector:@selector(enterAnimeStart)]) {
+        [_targetController enterAnimeStart];
+    }
     if (anime == nil) {
         [self onPopAnimeFinish];
     } else {

@@ -94,6 +94,9 @@
 - (UIViewController<IFusionPageProtocol> *)findTargetPageController:(FusionPageMessage *)message {
     NSDictionary *pageConfig = [_adapter getPageConfig:message.pageName];
     if (pageConfig == nil) {
+        if ([_pageDic valueForKey:message.pageNick]) {
+            return [_pageDic valueForKey:message.pageNick];
+        }
         return nil;
     }
     UIViewController<IFusionPageProtocol> *targetController = nil;
@@ -121,15 +124,24 @@
 - (void)refreshPageContentView:(UIView*)contentView
                 pageController:(UIViewController<IFusionPageProtocol>*)controller {
     
-    if ([controller getPrevSnapView] &&
-        [[contentView subviews] containsObject:[controller getPrevSnapView]] == NO) {
-        [[controller getPrevSnapView] setFrame:CGRectMake(0.0, 0.0, contentView.frame.size.width, contentView.frame.size.height)];
-        [contentView addSubview:[controller getPrevSnapView]];
+    UIView *prevSnapView = nil;
+    UIView *prevMaskView = nil;
+    if ([controller respondsToSelector:@selector(getPrevSnapView)]) {
+        prevSnapView = [controller getPrevSnapView];
     }
-    if ([controller getPrevMaskView] &&
-        [[contentView subviews] containsObject:[controller getPrevMaskView]] == NO) {
-        [[controller getPrevMaskView] setFrame:CGRectMake(0.0, 0.0, contentView.frame.size.width, contentView.frame.size.height)];
-        [contentView addSubview:[controller getPrevMaskView]];
+    if ([controller respondsToSelector:@selector(getPrevMaskView)]) {
+        prevMaskView = [controller getPrevMaskView];
+    }
+    
+    if (prevSnapView &&
+        [[contentView subviews] containsObject:prevSnapView] == NO) {
+        [prevSnapView setFrame:CGRectMake(0.0, 0.0, contentView.frame.size.width, contentView.frame.size.height)];
+        [contentView addSubview:prevSnapView];
+    }
+    if (prevMaskView &&
+        [[contentView subviews] containsObject:prevMaskView] == NO) {
+        [prevMaskView setFrame:CGRectMake(0.0, 0.0, contentView.frame.size.width, contentView.frame.size.height)];
+        [contentView addSubview:prevMaskView];
     }
     [contentView bringSubviewToFront:controller.view];
 }

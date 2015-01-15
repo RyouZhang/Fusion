@@ -26,6 +26,12 @@
         case ScrollR2L_NaviAnime:
             anime = [NSClassFromString(@"FusionScrollR2LAnime") new];
             break;
+        case SlideB2T_NaviAnime:
+            anime = [NSClassFromString(@"FusionSlideB2TAnime") new];
+            break;
+        case SlideT2B_NaviAnime:
+            anime = [NSClassFromString(@"FusionSlideT2BAnime") new];
+            break;
         case No_NaviAnime:
             return nil;
         default:

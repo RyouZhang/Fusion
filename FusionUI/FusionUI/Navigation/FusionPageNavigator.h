@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class FusionNaviBar;
 @class FusionTabBar;
 @class FusionPageMessage;
 @class FusionPageController;
@@ -36,11 +37,13 @@
 - (FusionPageNavigator *)getNavigator;
 
 - (void)processPageCommand:(NSString *)command args:(NSDictionary *)args;
-
+@optional
 - (void)setTabBar:(FusionTabBar *)tabBar;
 - (FusionTabBar *)getTabBar;
 
-@optional
+- (void)setNaviBar:(FusionNaviBar *)naviBar;
+- (FusionNaviBar *)getNaviBar;
+
 - (void)updateSubviewsLayout;
 
 - (void)setPrevSnapView:(UIView *)prevSnapView;
