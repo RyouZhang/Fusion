@@ -21,7 +21,7 @@
 - (void)refreshPageContentView:(UIView*)contentView
                 pageController:(UIViewController<IFusionPageProtocol>*)controller;
 
-- (void)garbageCollection;
+- (void)garbageCollection:(BOOL)isPop;
 
 - (void)processWaittingArray;
 @end

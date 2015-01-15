@@ -134,61 +134,34 @@
     [contentView bringSubviewToFront:controller.view];
 }
 
-- (void)garbageCollection {
+- (void)garbageCollection:(BOOL)isPop {
     [_pageDic setValue:_currentController
                 forKey:[_currentController getPageNick]];
-    
-    NSString *targetKey = nil;
+    //clean stack
+    NSString *targetKey = [_currentController getPageNick];
     if ([_currentController getTabBar]) {
-        FusionTabBar *tabbar = [_currentController getTabBar];
-        NSString *tabbarName = [tabbar getTabbarName];
-        NSMutableArray *pageArray = [_tabbarPageDic valueForKey:tabbarName];
-        if (pageArray == nil) {
-            pageArray = [NSMutableArray array];
-            [_tabbarPageDic setValue:pageArray
-                              forKey:tabbarName];
-        }
-        if ([pageArray containsObject:_currentController]) {
-            [pageArray addObject:_currentController];
-        }
-        targetKey = tabbarName;
-    } else {
-        targetKey = [_currentController getPageNick];
+        targetKey = [[_currentController getTabBar] getTabbarName];
     }
-    
-    if ([_pageNickStack containsObject:targetKey] == NO) {
-        if ([_pageNickStack count] == 0) {
-            [_pageNickStack addObject:targetKey];
-        } else {
+    if (isPop) {
+        if (NO == [_pageNickStack containsObject:targetKey]) {
             [_pageNickStack insertObject:targetKey atIndex:1];
+        }
+    } else {
+        if (NO == [_pageNickStack containsObject:targetKey]) {
+            [_pageNickStack addObject:targetKey];
         }
     }
     NSInteger index = [_pageNickStack indexOfObject:targetKey];
-    [_pageNickStack removeObjectsInRange:NSMakeRange(index + 1, [_pageNickStack count] - index - 1)];
-    
-    NSMutableArray *deleteArray = [NSMutableArray new];
-    for (NSString *key in [_tabbarDic allKeys]) {
-        if ([_pageNickStack containsObject:key] == NO) {
-            [deleteArray addObject:key];
-        }
-    }
+    NSArray *deleteArray = [_pageNickStack subarrayWithRange:NSMakeRange(index + 1, [_pageNickStack count] - index - 1)];    
     for (NSString *key in deleteArray) {
-        NSArray *pageArray = [_tabbarPageDic valueForKey:key];
-        for (UIViewController<IFusionPageProtocol> *controller in pageArray) {
-            [_pageDic removeObjectForKey:[controller getPageNick]];
-        }
-        [_tabbarPageDic removeObjectForKey:key];
-    }
-    [_tabbarDic removeObjectsForKeys:deleteArray];
-    [deleteArray removeAllObjects];
-    
-    for (NSString *key in [_pageDic allKeys]) {
-        if ([_pageNickStack containsObject:key] == NO) {
-            [deleteArray addObject:key];
+        if ([_tabbarDic valueForKey:key]) {
+            [_tabbarDic removeObjectForKey:key];
+            [_tabbarPageDic removeObjectForKey:key];
+        } else if([_pageDic valueForKey:key]) {
+            [_pageDic removeObjectForKey:key];
         }
     }
-    [_pageDic removeObjectsForKeys:deleteArray];
-    SafeRelease(deleteArray);
+    [_pageNickStack removeObjectsInRange:NSMakeRange(index + 1, [_pageNickStack count] - index - 1)];
 }
 
 - (void)processWaittingArray {

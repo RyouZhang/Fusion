@@ -51,7 +51,7 @@
     SafeRelease(_targetController);
     
     [self recoverTabBarForPageController:_currentController];
-    [self garbageCollection];
+    [self garbageCollection:NO];
     [self processWaittingArray];
 }
 
@@ -123,7 +123,7 @@
     
     [self recoverTabBarForPageController:_currentController];
 
-    [self garbageCollection];
+    [self garbageCollection:YES];
     [self processWaittingArray];
 }
 

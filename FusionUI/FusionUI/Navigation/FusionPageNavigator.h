@@ -78,10 +78,10 @@
 @interface FusionPageNavigator : UIViewController {
 @private
     NSMutableDictionary     *_pageDic;
-    NSMutableArray          *_pageNickStack;
     NSMutableDictionary     *_tabbarDic;
     NSMutableDictionary     *_tabbarPageDic;
     
+    NSMutableArray          *_pageNickStack;    
     NSMutableArray          *_waittingArray;
     
     CGFloat                 _cornerRadius;
