@@ -50,6 +50,10 @@
     _currentController = SafeRetain(_targetController);
     SafeRelease(_targetController);
     
+    if (_currentController.navigationItem) {
+        [_naviBar pushNavigationItem:_currentController.navigationItem animated:NO];
+    }
+    
     [self recoverTabBarForPageController:_currentController];
     [self garbageCollection:NO];
     [self processWaittingArray];

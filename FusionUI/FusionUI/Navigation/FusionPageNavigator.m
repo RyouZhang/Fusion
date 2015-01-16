@@ -15,6 +15,10 @@
 #import "FusionTabBar.h"
 #import "SafeARC.h"
 
+@interface FusionPageNavigator() {
+}
+@end
+
 @implementation FusionPageNavigator
 @synthesize cornerRadius = _cornerRadius;
 @synthesize adapter = _adapter, rewriter = _rewriter;
@@ -32,6 +36,10 @@
         [_containerView setBackgroundColor:[UIColor clearColor]];
         [self.view setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:_containerView];
+        
+        _naviBar = [UINavigationBar new];
+        [_naviBar setBarStyle:UIBarStyleDefault];
+        [self.view addSubview:_naviBar];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(onStatusBarFrameChanged:)
@@ -52,6 +60,12 @@
 }
 
 - (void)updateSubviewsLayout {
+    if (self.view.frame.size.width > self.view.frame.size.height) {
+        [_naviBar setFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    } else {
+        [_naviBar setFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
+    }
+    [self.view bringSubviewToFront:_naviBar];
     [_containerView setFrame:self.view.bounds];
     [_maskView setFrame:CGRectMake(0,
                                    0,
