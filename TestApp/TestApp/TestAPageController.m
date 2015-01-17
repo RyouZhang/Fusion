@@ -9,10 +9,20 @@
 #import "TestAPageController.h"
 #import <FusionUI/FusionUI.h>
 
+@interface TestAPageController() {
+@private
+    UIImageView *_bgImageView;
+}
+@end
+
 @implementation TestAPageController
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor yellowColor]];
+    
+    _bgImageView = [UIImageView new];
+    [_bgImageView setImage:[UIImage imageNamed:@"1"]];
+    [self.view addSubview:_bgImageView];
     
 //    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
 //    [button setTitle:@"GO" forState:UIControlStateNormal];
@@ -36,7 +46,12 @@
 //    [label setText:[self description]];
 //    [label setTextAlignment:NSTextAlignmentCenter];
 //    [_naviBar setCenterView:label];
+}
+
+- (void)updateSubviewsLayout {
+    [super updateSubviewsLayout];
     
+    [_bgImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 }
 
 - (void)processPageCommand:(NSString *)command args:(NSDictionary *)args {

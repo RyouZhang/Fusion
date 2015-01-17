@@ -10,6 +10,7 @@
 #import "FusionPageNavigator+Internal.h"
 #import "FusionPageNavigator+NaviAnime.h"
 #import "FusionPageNavigator+Auto.h"
+#import "FusionPageNavigator+NaviBar.h"
 #import "FusionNaviAnimeHelper.h"
 #import "FusionPageMessage.h"
 #import "FusionTabBar.h"
@@ -38,6 +39,7 @@
         [self.view addSubview:_containerView];
         
         _naviBar = [UINavigationBar new];
+        [_naviBar setDelegate:self];
         [_naviBar setBarStyle:UIBarStyleDefault];
         [self.view addSubview:_naviBar];
         
@@ -66,6 +68,7 @@
         [_naviBar setFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
     }
     [self.view bringSubviewToFront:_naviBar];
+    
     [_containerView setFrame:self.view.bounds];
     [_maskView setFrame:CGRectMake(0,
                                    0,
