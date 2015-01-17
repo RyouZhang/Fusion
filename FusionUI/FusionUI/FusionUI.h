@@ -13,7 +13,6 @@
 #import <FusionUI/FusionPageNavigator+Auto.h>
 #import <FusionUI/FusionPageNavigator+Manual.h>
 #import <FusionUI/FusionPageController.h>
-#import <FusionUI/FusionNaviBar.h>
 #import <FusionUI/FusionTabBar.h>
 #import <FusionUI/FusionNaviAnimeHelper.h>
 #import <FusionUI/FusionNaviAnime.h>
