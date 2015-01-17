@@ -9,6 +9,7 @@
 #import "FusionPageNavigator+NaviAnime.h"
 #import "FusionPageNavigator+Internal.h"
 #import "FusionPageNavigator+Tab.h"
+#import "FusionPageNavigator+NaviBar.h"
 #import "Anime/FusionNaviAnime.h"
 #import "SafeARC.h"
 
@@ -45,6 +46,8 @@
         [_pageNickStack removeObject:[_currentController getPageNick]];
         [_pageDic removeObjectForKey:[_currentController getPageNick]];
     }
+    
+    [self recoverPushNavigationBar];
     
     SafeRelease(_currentController);
     _currentController = SafeRetain(_targetController);
@@ -119,10 +122,12 @@
     _currentContentView = SafeRetain(_targetContentView);
     SafeRelease(_targetContentView);
     
+    [self recoverPopNavigationBar];
+    
     SafeRelease(_currentController);
     _currentController = SafeRetain(_targetController);
     SafeRelease(_targetController);
-    
+
     [self recoverTabBarForPageController:_currentController];
 
     [self garbageCollection:YES];

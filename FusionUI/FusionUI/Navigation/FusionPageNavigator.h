@@ -88,7 +88,8 @@
     NSMutableArray          *_waittingArray;
     
     CGFloat                 _cornerRadius;
-    
+
+    UINavigationBar         *_naviBar;
     UIView                  *_containerView;
     UIView                  *_maskView;
     

@@ -33,7 +33,7 @@
         message = [_rewriter rewriteFusionPageMessage:message];
     }
     
-    _targetController = [self findTargetPageController:message];
+    _targetController = SafeRetain([self generateTargetPageController:message]);
     if (_targetController == nil) {
         return nil;
     }
@@ -125,7 +125,7 @@
         message = [_rewriter rewriteFusionPageMessage:message];
     }
     
-    _targetController = [self findTargetPageController:message];
+    _targetController = SafeRetain([self generateTargetPageController:message]);
     if (_targetController == _currentController) {
         _targetController = nil;
         return nil;

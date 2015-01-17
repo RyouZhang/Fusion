@@ -92,6 +92,13 @@
 }
 
 - (UIViewController<IFusionPageProtocol> *)findTargetPageController:(FusionPageMessage *)message {
+    if ([_pageDic valueForKey:message.pageNick]) {
+        return [_pageDic valueForKey:message.pageNick];
+    }
+    return nil;
+}
+
+- (UIViewController<IFusionPageProtocol> *)generateTargetPageController:(FusionPageMessage *)message {
     NSDictionary *pageConfig = [_adapter getPageConfig:message.pageName];
     if (pageConfig == nil) {
         if ([_pageDic valueForKey:message.pageNick]) {

@@ -11,13 +11,13 @@
 		201D31DA1A66616600C53B0F /* FusionScrollL2RAnime.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D31D81A66616600C53B0F /* FusionScrollL2RAnime.m */; };
 		201D31DD1A6661EE00C53B0F /* FusionScrollR2LAnime.h in Headers */ = {isa = PBXBuildFile; fileRef = 201D31DB1A6661EE00C53B0F /* FusionScrollR2LAnime.h */; };
 		201D31DE1A6661EE00C53B0F /* FusionScrollR2LAnime.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D31DC1A6661EE00C53B0F /* FusionScrollR2LAnime.m */; };
+		205A96A71A6A038900027106 /* FusionPageNavigator+NaviBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 205A96A51A6A038900027106 /* FusionPageNavigator+NaviBar.h */; };
+		205A96A81A6A038900027106 /* FusionPageNavigator+NaviBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 205A96A61A6A038900027106 /* FusionPageNavigator+NaviBar.m */; };
 		206B11BC1A66272C0075C1D6 /* FusionPageNavigator+Tab.h in Headers */ = {isa = PBXBuildFile; fileRef = 206B11BA1A66272C0075C1D6 /* FusionPageNavigator+Tab.h */; };
 		206B11BD1A66272C0075C1D6 /* FusionPageNavigator+Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 206B11BB1A66272C0075C1D6 /* FusionPageNavigator+Tab.m */; };
 		20969CE01A63861B00E9C377 /* FusionUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 20969CDF1A63861B00E9C377 /* FusionUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20969CF91A63869E00E9C377 /* FusionPageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 20969CF71A63869E00E9C377 /* FusionPageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20969CFA1A63869E00E9C377 /* FusionPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20969CF81A63869E00E9C377 /* FusionPageController.m */; };
-		20969CFD1A6386E200E9C377 /* FusionNaviBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 20969CFB1A6386E200E9C377 /* FusionNaviBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20969CFE1A6386E200E9C377 /* FusionNaviBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 20969CFC1A6386E200E9C377 /* FusionNaviBar.m */; };
 		20969D011A63871700E9C377 /* FusionTabBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 20969CFF1A63871700E9C377 /* FusionTabBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20969D021A63871700E9C377 /* FusionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 20969D001A63871700E9C377 /* FusionTabBar.m */; };
 		20969D051A63878800E9C377 /* FusionPageNavigator.h in Headers */ = {isa = PBXBuildFile; fileRef = 20969D031A63878800E9C377 /* FusionPageNavigator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -56,6 +56,8 @@
 		201D31D81A66616600C53B0F /* FusionScrollL2RAnime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FusionScrollL2RAnime.m; sourceTree = "<group>"; };
 		201D31DB1A6661EE00C53B0F /* FusionScrollR2LAnime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FusionScrollR2LAnime.h; sourceTree = "<group>"; };
 		201D31DC1A6661EE00C53B0F /* FusionScrollR2LAnime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FusionScrollR2LAnime.m; sourceTree = "<group>"; };
+		205A96A51A6A038900027106 /* FusionPageNavigator+NaviBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FusionPageNavigator+NaviBar.h"; sourceTree = "<group>"; };
+		205A96A61A6A038900027106 /* FusionPageNavigator+NaviBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FusionPageNavigator+NaviBar.m"; sourceTree = "<group>"; };
 		206B11BA1A66272C0075C1D6 /* FusionPageNavigator+Tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FusionPageNavigator+Tab.h"; sourceTree = "<group>"; };
 		206B11BB1A66272C0075C1D6 /* FusionPageNavigator+Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FusionPageNavigator+Tab.m"; sourceTree = "<group>"; };
 		20969CDA1A63861B00E9C377 /* FusionUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FusionUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,8 +65,6 @@
 		20969CDF1A63861B00E9C377 /* FusionUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FusionUI.h; sourceTree = "<group>"; };
 		20969CF71A63869E00E9C377 /* FusionPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FusionPageController.h; sourceTree = "<group>"; };
 		20969CF81A63869E00E9C377 /* FusionPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FusionPageController.m; sourceTree = "<group>"; };
-		20969CFB1A6386E200E9C377 /* FusionNaviBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FusionNaviBar.h; sourceTree = "<group>"; };
-		20969CFC1A6386E200E9C377 /* FusionNaviBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FusionNaviBar.m; sourceTree = "<group>"; };
 		20969CFF1A63871700E9C377 /* FusionTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FusionTabBar.h; sourceTree = "<group>"; };
 		20969D001A63871700E9C377 /* FusionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FusionTabBar.m; sourceTree = "<group>"; };
 		20969D031A63878800E9C377 /* FusionPageNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FusionPageNavigator.h; sourceTree = "<group>"; };
@@ -151,8 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				20969D071A63883800E9C377 /* Anime */,
-				20969CFB1A6386E200E9C377 /* FusionNaviBar.h */,
-				20969CFC1A6386E200E9C377 /* FusionNaviBar.m */,
 				20969D831A63AB2000E9C377 /* FusionPageMessage.h */,
 				20969D841A63AB2000E9C377 /* FusionPageMessage.m */,
 				20969D031A63878800E9C377 /* FusionPageNavigator.h */,
@@ -165,6 +163,8 @@
 				20969DCC1A64243B00E9C377 /* FusionPageNavigator+Manual.m */,
 				20969D871A63DC7D00E9C377 /* FusionPageNavigator+NaviAnime.h */,
 				20969D881A63DC7D00E9C377 /* FusionPageNavigator+NaviAnime.m */,
+				205A96A51A6A038900027106 /* FusionPageNavigator+NaviBar.h */,
+				205A96A61A6A038900027106 /* FusionPageNavigator+NaviBar.m */,
 				206B11BA1A66272C0075C1D6 /* FusionPageNavigator+Tab.h */,
 				206B11BB1A66272C0075C1D6 /* FusionPageNavigator+Tab.m */,
 				20969CFF1A63871700E9C377 /* FusionTabBar.h */,
@@ -216,11 +216,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				20969D201A63A08600E9C377 /* FusionSlideR2LAnime.h in Headers */,
+				205A96A71A6A038900027106 /* FusionPageNavigator+NaviBar.h in Headers */,
 				20969D241A63A0B600E9C377 /* FusionSlideB2TAnime.h in Headers */,
 				20969D281A63A0FF00E9C377 /* FusionSlideT2BAnime.h in Headers */,
 				20969D101A638F9D00E9C377 /* FusionNaviAnimeHelper.h in Headers */,
 				20969D0A1A63885300E9C377 /* FusionNaviAnime.h in Headers */,
-				20969CFD1A6386E200E9C377 /* FusionNaviBar.h in Headers */,
 				20969D051A63878800E9C377 /* FusionPageNavigator.h in Headers */,
 				20969D011A63871700E9C377 /* FusionTabBar.h in Headers */,
 				201D31DD1A6661EE00C53B0F /* FusionScrollR2LAnime.h in Headers */,
@@ -308,6 +308,7 @@
 			files = (
 				20969D0B1A63885300E9C377 /* FusionNaviAnime.m in Sources */,
 				20969D251A63A0B600E9C377 /* FusionSlideB2TAnime.m in Sources */,
+				205A96A81A6A038900027106 /* FusionPageNavigator+NaviBar.m in Sources */,
 				206B11BD1A66272C0075C1D6 /* FusionPageNavigator+Tab.m in Sources */,
 				20969D061A63878800E9C377 /* FusionPageNavigator.m in Sources */,
 				20969D111A638F9D00E9C377 /* FusionNaviAnimeHelper.m in Sources */,
@@ -322,7 +323,6 @@
 				20969D151A639E7F00E9C377 /* FusionPageNavigator+Internal.m in Sources */,
 				201D31DE1A6661EE00C53B0F /* FusionScrollR2LAnime.m in Sources */,
 				20969D311A63A22100E9C377 /* FusionPageNavigator+Auto.m in Sources */,
-				20969CFE1A6386E200E9C377 /* FusionNaviBar.m in Sources */,
 				20969D2D1A63A14500E9C377 /* FusionSlideL2RAnime.m in Sources */,
 				20969D291A63A0FF00E9C377 /* FusionSlideT2BAnime.m in Sources */,
 				201D31DA1A66616600C53B0F /* FusionScrollL2RAnime.m in Sources */,

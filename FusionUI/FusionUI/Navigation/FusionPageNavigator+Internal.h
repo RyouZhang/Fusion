@@ -17,6 +17,7 @@
 - (UIImage*)createContentViewSnapshot:(UIView*)contentView;
 
 - (UIViewController<IFusionPageProtocol> *)findTargetPageController:(FusionPageMessage *)message;
+- (UIViewController<IFusionPageProtocol> *)generateTargetPageController:(FusionPageMessage *)message;
 
 - (void)refreshPageContentView:(UIView*)contentView
                 pageController:(UIViewController<IFusionPageProtocol>*)controller;

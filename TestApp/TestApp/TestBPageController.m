@@ -11,7 +11,7 @@
 @implementation TestBPageController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_naviBar setBackgroundColor:[UIColor blueColor]];
+//    [_naviBar setBackgroundColor:[UIColor blueColor]];
     [self.view setBackgroundColor:[UIColor greenColor]];
     
     {

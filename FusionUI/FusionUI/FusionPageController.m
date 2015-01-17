@@ -9,7 +9,6 @@
 #import "FusionPageController.h"
 #import "Navigation/FusionPageNavigator.h"
 #import "Navigation/FusionPageNavigator+Manual.h"
-#import "Navigation/FusionNaviBar.h"
 #import "Navigation/FusionTabBar.h"
 #import "Navigation/Anime/FusionNaviAnimeHelper.h"
 #import "Navigation/Anime/FusionNaviAnime.h"
@@ -43,24 +42,12 @@
         } else {
             _naviBarHidden = NO;
         }
-        if (_naviBarHidden == NO) {
-            NSDictionary *navibarInfo = [_pageConfig valueForKey:@"navibar"];
-            if ([navibarInfo valueForKey:@"class"] == nil) {
-                _naviBar = [[FusionNaviBar alloc] initWithConfig:navibarInfo];
-            } else {
-                _naviBar = [[NSClassFromString([navibarInfo valueForKey:@"class"]) alloc] initWithConfig:navibarInfo];
-            }
-            _naviBar.clipsToBounds = YES;
-        }
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (_naviBar) {
-        [self.view addSubview:_naviBar];
-    }
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         if (![_pageConfig objectForKey:@"no_gesture_navi"] ||
             [[_pageConfig objectForKey:@"no_gesture_navi"] boolValue] == NO) {
@@ -96,7 +83,6 @@
 }
 
 - (void)updateSubviewsLayout {
-    [_naviBar setFrame:CGRectMake(0, 0, self.view.frame.size.width, [_naviBar getNaviBarHeight])];
     [_tabBar setFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
 }
 
@@ -307,7 +293,6 @@
     SafeRelease(_prevSnapView);
     SafeRelease(_prevMaskView);
     SafeRelease(_manualAnime);
-    SafeRelease(_naviBar);
     SafeRelease(_tabBar);
     SafeSuperDealloc(super);
 }
