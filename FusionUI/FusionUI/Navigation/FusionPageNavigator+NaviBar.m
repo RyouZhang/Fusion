@@ -18,12 +18,12 @@
     NSMutableArray *items = [NSMutableArray new];
     FusionPageMessage *message = [[FusionPageMessage alloc] initWithURL:[_targetController getCallbackUrl]
                                                                    args:nil];
-    UIViewController<IFusionPageProtocol> *temp = [self findTargetPageController:message];
+    UIViewController<IFusionPageProtocol> *prevController = [self findTargetPageController:message];
     SafeRelease(message);
-    if (temp) {
-        [items addObject:temp.navigationItem];
+    if (prevController && prevController.navigationItem) {
+        [items addObject:prevController.navigationItem];
     }
-    if (_targetController) {
+    if (_targetController && _targetController.navigationItem) {
         [items addObject:_targetController.navigationItem];
     }
     [_naviBar setItems:items animated:NO];
@@ -34,12 +34,12 @@
     NSMutableArray *items = [NSMutableArray new];
     FusionPageMessage *message = [[FusionPageMessage alloc] initWithURL:[_targetController getCallbackUrl]
                                                                    args:nil];
-    UIViewController<IFusionPageProtocol> *temp = [self findTargetPageController:message];
+    UIViewController<IFusionPageProtocol> *prevController = [self findTargetPageController:message];
     SafeRelease(message);
-    if (temp) {
-        [items addObject:temp.navigationItem];
+    if (prevController && prevController.navigationItem) {
+        [items addObject:prevController.navigationItem];
     }
-    if (_targetController) {
+    if (_targetController && _targetController.navigationItem) {
         [items addObject:_targetController.navigationItem];
     }
     [_naviBar setItems:items animated:NO];
