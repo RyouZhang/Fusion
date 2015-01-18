@@ -31,6 +31,10 @@
     [super layoutSubviews];
 }
 
+- (CGFloat)getTabbarHeight {
+    return 50.0;
+}
+
 - (void)hideTabbar:(BOOL)isAnime {
     _isHidden = YES;
     if (isAnime) {

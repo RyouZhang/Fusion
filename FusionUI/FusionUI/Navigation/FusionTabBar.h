@@ -24,6 +24,8 @@
 
 - (NSString *)getTabbarName;
 
+- (CGFloat)getTabbarHeight;
+
 - (void)hideTabbar:(BOOL)isAnime;
 - (void)showTabbar:(BOOL)isAnime;
 @end

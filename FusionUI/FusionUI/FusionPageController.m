@@ -83,7 +83,12 @@
 }
 
 - (void)updateSubviewsLayout {
-    [_tabBar setFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
+    if (_tabBar) {
+        [_tabBar setFrame:CGRectMake(0,
+                                     self.view.frame.size.height - [_tabBar getTabbarHeight],
+                                     self.view.frame.size.width,
+                                     [_tabBar getTabbarHeight])];
+    }
 }
 
 - (void)processPageCommand:(NSString *)command args:(NSDictionary *)args {

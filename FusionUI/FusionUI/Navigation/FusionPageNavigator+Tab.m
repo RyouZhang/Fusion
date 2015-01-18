@@ -14,49 +14,56 @@
     NSString *tabbarName = [[_targetController getPageConfig] valueForKey:@"tabbar_name"];
     if (tabbarName) {
         if ([_tabbarDic valueForKey:tabbarName]) {
-            FusionTabBar *tarbar = [_tabbarDic valueForKey:tabbarName];
-            if (tarbar.superview) {
-                [tarbar removeFromSuperview];
+            FusionTabBar *tabbar = [_tabbarDic valueForKey:tabbarName];
+            if (tabbar.superview) {
+                [tabbar removeFromSuperview];
             }
-            [_targetController setTabBar:tarbar];
+            [_targetController setTabBar:tabbar];
+            [tabbar setFrame:CGRectMake(0,
+                                        self.view.frame.size.height - [tabbar getTabbarHeight],
+                                        self.view.frame.size.width,
+                                        [tabbar getTabbarHeight])];
         } else {
-            FusionTabBar *tarbar = [_adapter generateFusionTabbar:tabbarName];
-            [tarbar setNavigator:self];
-            [_targetController setTabBar:tarbar];
-            [_tabbarDic setValue:tarbar forKey:tabbarName];
+            FusionTabBar *tabbar = [_adapter generateFusionTabbar:tabbarName];
+            [tabbar setNavigator:self];
+            [_targetController setTabBar:tabbar];
+            [_tabbarDic setValue:tabbar forKey:tabbarName];
+            [tabbar setFrame:CGRectMake(0,
+                                        self.view.frame.size.height - [tabbar getTabbarHeight],
+                                        self.view.frame.size.width,
+                                        [tabbar getTabbarHeight])];
         }
         if (_currentController &&
             [_currentController getTabBar] &&
             [[_currentController getTabBar] isEqual:[_targetController getTabBar]]) {
-            FusionTabBar *tarbar = [_currentController getTabBar];
-            [tarbar removeFromSuperview];
-            [tarbar setFrame:CGRectMake(0,
-                                        self.view.frame.size.height - tarbar.frame.size.height,
-                                        tarbar.frame.size.width,
-                                        tarbar.frame.size.height)];
-            [self.view addSubview:tarbar];
-            if ([tarbar isHidden]) {
-                [tarbar showTabbar:YES];
+            FusionTabBar *tabbar = [_currentController getTabBar];
+            [tabbar removeFromSuperview];
+            [tabbar setFrame:CGRectMake(0,
+                                        self.view.frame.size.height - tabbar.frame.size.height,
+                                        tabbar.frame.size.width,
+                                        tabbar.frame.size.height)];
+            [self.view addSubview:tabbar];
+            if ([tabbar isHidden]) {
+                [tabbar showTabbar:YES];
             }
         } else {
-            FusionTabBar *tarbar = [_targetController getTabBar];
-            if ([tarbar isHidden]) {
-                [tarbar showTabbar:YES];
+            FusionTabBar *tabbar = [_targetController getTabBar];
+            if ([tabbar isHidden]) {
+                [tabbar showTabbar:YES];
             }
         }
     }
 }
 
 - (void)recoverTabBarForPageController:(UIViewController<IFusionPageProtocol> *)controller {
-    FusionTabBar *tarbar = [controller getTabBar];
-    if (tarbar == nil) {
+    FusionTabBar *tabbar = [controller getTabBar];
+    if (tabbar == nil) {
         return;
     }
-    [tarbar removeFromSuperview];
-    [tarbar setFrame:CGRectMake(0,
-                                controller.view.frame.size.height - tarbar.frame.size.height,
-                                tarbar.frame.size.width,
-                                tarbar.frame.size.height)];
-    [controller.view addSubview:tarbar];
+    [tabbar setFrame:CGRectMake(0,
+                                self.view.frame.size.height - tabbar.frame.size.height,
+                                tabbar.frame.size.width,
+                                tabbar.frame.size.height)];
+    [self.view addSubview:tabbar];
 }
 @end

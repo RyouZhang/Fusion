@@ -83,6 +83,13 @@
         [_currentController respondsToSelector:@selector(updateSubviewsLayout)]) {
         [_currentController updateSubviewsLayout];
     }
+    if ([_currentController getTabBar]) {
+        FusionTabBar *tabbar = [_currentController getTabBar];
+        [tabbar setFrame:CGRectMake(0,
+                                    self.view.frame.size.height - tabbar.frame.size.height,
+                                    self.view.frame.size.width,
+                                    tabbar.frame.size.height)];
+    }
 }
 
 #pragma mark rotation
