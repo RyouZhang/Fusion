@@ -52,6 +52,12 @@
                 [tabbar showTabbar:YES];
             }
         }
+    } else {
+        if ([_currentController getTabBar]) {
+            FusionTabBar *tabbar = [_currentController getTabBar];
+            [tabbar removeFromSuperview];
+            [_currentController.view addSubview:tabbar];
+        }
     }
 }
 
