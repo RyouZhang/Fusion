@@ -49,6 +49,11 @@ static TestAdapter *_TestAdapter_Instance = nil;
                  @"pageName": @"TestPageD",
                  @"class": @"TestDPageController"
                  };
+    } else if([pageName isEqualToString:@"imagePicker"]) {        
+        return @{
+                 @"pageName": @"imagePicker",
+                 @"class": @"UITableViewController"
+                 };
     }
     return nil;
 }

@@ -15,23 +15,12 @@
     if (tabbarName) {
         if ([_tabbarDic valueForKey:tabbarName]) {
             FusionTabBar *tabbar = [_tabbarDic valueForKey:tabbarName];
-            if (tabbar.superview) {
-                [tabbar removeFromSuperview];
-            }
             [_targetController setTabBar:tabbar];
-            [tabbar setFrame:CGRectMake(0,
-                                        self.view.frame.size.height - [tabbar getTabbarHeight],
-                                        self.view.frame.size.width,
-                                        [tabbar getTabbarHeight])];
         } else {
             FusionTabBar *tabbar = [_adapter generateFusionTabbar:tabbarName];
             [tabbar setNavigator:self];
             [_targetController setTabBar:tabbar];
             [_tabbarDic setValue:tabbar forKey:tabbarName];
-            [tabbar setFrame:CGRectMake(0,
-                                        self.view.frame.size.height - [tabbar getTabbarHeight],
-                                        self.view.frame.size.width,
-                                        [tabbar getTabbarHeight])];
         }
         if (_currentController &&
             [_currentController getTabBar] &&
@@ -48,6 +37,11 @@
             }
         } else {
             FusionTabBar *tabbar = [_targetController getTabBar];
+            [tabbar setFrame:CGRectMake(0,
+                                        self.view.frame.size.height - tabbar.frame.size.height,
+                                        tabbar.frame.size.width,
+                                        tabbar.frame.size.height)];
+            [_targetController.view addSubview:tabbar];
             if ([tabbar isHidden]) {
                 [tabbar showTabbar:YES];
             }
@@ -61,8 +55,8 @@
     }
 }
 
-- (void)recoverTabBarForPageController:(UIViewController<IFusionPageProtocol> *)controller {
-    FusionTabBar *tabbar = [controller getTabBar];
+- (void)recoverTabBarForPageController {    
+    FusionTabBar *tabbar = [_targetController getTabBar];
     if (tabbar == nil) {
         return;
     }

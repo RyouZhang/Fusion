@@ -12,5 +12,5 @@
 @interface FusionPageNavigator(Tab)
 - (void)processTabBarForPageController:(UIViewController<IFusionPageProtocol> *)controller;
 
-- (void)recoverTabBarForPageController:(UIViewController<IFusionPageProtocol> *)controller;
+- (void)recoverTabBarForPageController;
 @end

@@ -19,7 +19,7 @@
 @interface FusionPageController : UIViewController<IFusionPageProtocol,UIGestureRecognizerDelegate> {
 @protected
     BOOL                _naviBarHidden;
-    FusionTabBar        *_tabBar;
+    __unsafe_unretained FusionTabBar        *_tabBar;
 @private
 //for manual navi anime
     CGPoint             _speed;

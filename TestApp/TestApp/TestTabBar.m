@@ -19,9 +19,7 @@
 @implementation TestTabBar
 - (id)initWithConfig:(NSDictionary *)config {
     self = [super initWithConfig:config];
-    if (self) {
-        [self setBackgroundColor:[UIColor redColor]];
-        
+    if (self) {        
         _currentIndex = 0;
         
         _buttonArray = [NSMutableArray new];

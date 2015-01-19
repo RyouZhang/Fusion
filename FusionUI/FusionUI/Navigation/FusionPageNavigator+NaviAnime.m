@@ -48,12 +48,12 @@
     }
     
     [self recoverPushNavigationBar];
+    [self recoverTabBarForPageController];
     
     SafeRelease(_currentController);
     _currentController = SafeRetain(_targetController);
     SafeRelease(_targetController);
     
-    [self recoverTabBarForPageController:_currentController];
     [self garbageCollection:NO];
     [self processWaittingArray];
 }
@@ -97,13 +97,14 @@
     if ([_targetController respondsToSelector:@selector(enterAnimeCancel)]) {
         [_targetController enterAnimeCancel];
     }
+    
+    [self recoverTabBarForPageController];
+    
     SafeRelease(_targetController);
     [_targetContentView removeFromSuperview];
     SafeRelease(_targetContentView);
     [_maskView removeFromSuperview];
     SafeRelease(_maskView);
-    
-    [self recoverTabBarForPageController:_currentController];
 }
 
 - (void)onPopAnimeFinish {
@@ -123,12 +124,11 @@
     SafeRelease(_targetContentView);
     
     [self recoverPopNavigationBar];
+    [self recoverTabBarForPageController];
     
     SafeRelease(_currentController);
     _currentController = SafeRetain(_targetController);
     SafeRelease(_targetController);
-
-    [self recoverTabBarForPageController:_currentController];
 
     [self garbageCollection:YES];
     [self processWaittingArray];
@@ -163,13 +163,13 @@
         [_targetController enterAnimeCancel];
     }
     
+     [self recoverTabBarForPageController];
+    
     SafeRelease(_targetController);
     [_targetContentView removeFromSuperview];
     SafeRelease(_targetContentView);
     [_maskView removeFromSuperview];
-    SafeRelease(_maskView);
-    
-    [self recoverTabBarForPageController:_currentController];
+    SafeRelease(_maskView);    
     
     [self refreshPageContentView:_currentContentView
                   pageController:_currentController];

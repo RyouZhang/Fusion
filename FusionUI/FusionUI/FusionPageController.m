@@ -174,9 +174,10 @@
 }
 
 - (void)setTabBar:(FusionTabBar *)tabBar {
-    SafeRelease(_tabBar);
-    _tabBar = SafeRetain(tabBar);
-    [self.view addSubview:_tabBar];
+    if (_tabBar == tabBar) {
+        return;
+    }
+    _tabBar = tabBar;
 }
 - (FusionTabBar *)getTabBar {
     return _tabBar;
@@ -290,6 +291,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     objc_removeAssociatedObjects(self);
+    _tabBar = nil;
     _navigator = nil;
     SafeRelease(_pageName);
     SafeRelease(_pageNick);
@@ -298,7 +300,6 @@
     SafeRelease(_prevSnapView);
     SafeRelease(_prevMaskView);
     SafeRelease(_manualAnime);
-    SafeRelease(_tabBar);
     SafeSuperDealloc(super);
 }
 @end

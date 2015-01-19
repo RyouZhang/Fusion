@@ -47,6 +47,27 @@
          forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     }
+    {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+        [button setFrame:CGRectMake(200, 100, 100, 100)];
+        [button setTitle:@"Hide" forState:UIControlStateNormal];
+        [button.layer setBorderWidth:1.0];
+        [button.layer setBorderColor:[UIColor redColor].CGColor];
+        [button addTarget:self
+                   action:@selector(onTapPrevButton:)
+         forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
+    }
+}
+
+- (void)onTapPrevButton:(id)sender {
+    FusionPageMessage *message = [[FusionPageMessage alloc] initWithPageName:@"imagePicker"
+                                                                    pageNick:nil
+                                                                     command:nil
+                                                                        args:nil
+                                                                    callback:nil];
+    [message setNaviAnimeType:SlideT2B_NaviAnime];
+    [[self getNavigator] gotoPage:message];
 }
 
 - (void)onTapButton:(id)sender {

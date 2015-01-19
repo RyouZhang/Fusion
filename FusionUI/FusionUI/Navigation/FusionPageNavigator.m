@@ -40,6 +40,7 @@
         
         _naviBar = [UINavigationBar new];
         [_naviBar setDelegate:self];
+        [_naviBar setTranslucent:YES];
         [_naviBar setBarStyle:UIBarStyleDefault];
         [self.view addSubview:_naviBar];
         
