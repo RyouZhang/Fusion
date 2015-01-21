@@ -68,11 +68,11 @@
 }
 
 - (void)onTapHideButton:(id)sender {
-    if (_tabBar) {
-        if ([_tabBar isHidden] == NO)
-            [_tabBar hideTabbar:YES];
+    if ([self getTabBar]) {
+        if ([[self getTabBar] isHidden] == NO)
+            [[self getTabBar] hideTabbar:YES];
         else
-            [_tabBar showTabbar:YES];
+            [[self getTabBar] showTabbar:YES];
     }
 }
 @end

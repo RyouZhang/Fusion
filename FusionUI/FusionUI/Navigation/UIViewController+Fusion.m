@@ -8,6 +8,7 @@
 
 #import "UIViewController+Fusion.h"
 #import "FusionPageNavigator.h"
+#import "FusionTabBar.h"
 #import "SafeARC.h"
 #import <objc/runtime.h>
 
@@ -58,7 +59,7 @@ static UIViewControllerHook *UIViewControllerHook_Instance = nil;
 }
 
 - (NSDictionary *)getPageConfig {
-    return objc_getAssociatedObject(self, @"pageConfig");
+    return objc_getAssociatedObject(self, "pageConfig");
 }
 
 - (void)setNaviAnimeType:(NSUInteger)animeType {
@@ -110,10 +111,11 @@ static UIViewControllerHook *UIViewControllerHook_Instance = nil;
 }
 
 - (void)setTabBar:(FusionTabBar *)tabBar {
-    assert(NO);
+    objc_setAssociatedObject(self, "fusionTabBar", tabBar, OBJC_ASSOCIATION_RETAIN);
+    [self.view addSubview:tabBar];
 }
 
 - (FusionTabBar *)getTabBar {
-    return nil;
+    return objc_getAssociatedObject(self, "fusionTabBar");
 }
 @end

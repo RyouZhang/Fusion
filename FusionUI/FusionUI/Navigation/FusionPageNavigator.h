@@ -36,11 +36,11 @@
 - (void)setNavigator:(FusionPageNavigator *)navigator;
 - (FusionPageNavigator *)getNavigator;
 
-- (void)processPageCommand:(NSString *)command args:(NSDictionary *)args;
-@optional
 - (void)setTabBar:(FusionTabBar *)tabBar;
 - (FusionTabBar *)getTabBar;
 
+- (void)processPageCommand:(NSString *)command args:(NSDictionary *)args;
+@optional
 - (void)updateSubviewsLayout;
 
 - (void)setPrevSnapView:(UIView *)prevSnapView;

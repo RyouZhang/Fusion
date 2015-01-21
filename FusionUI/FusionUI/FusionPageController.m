@@ -13,39 +13,31 @@
 #import "FusionNavigationBar.h"
 #import "Navigation/Anime/FusionNaviAnimeHelper.h"
 #import "Navigation/Anime/FusionNaviAnime.h"
+#import "UIViewController+Fusion.h"
 #import "FusionPageMessage.h"
 #import "SafeARC.h"
 
 @interface FusionPageController() {
 @private
-    NSDictionary    *_pageConfig;
-    NSString        *_pageName;
-    NSString        *_pageNick;
-    NSUInteger      _naviAnimeType;
-    NSURL           *_callbackUrl;
-    
     UIVisualEffectView  *_naviBarHost;
     
     UIView              *_prevSnapView;
     UIView              *_prevMaskView;
-    
-    __unsafe_unretained FusionPageNavigator *_navigator;
 }
 @end
 
 
 @implementation FusionPageController
 - (id)initWithConfig:(NSDictionary*)pageConfig {
-    self = [super init];
+    self = [super initWithConfig:pageConfig];
     if (self) {
-        _pageConfig = SafeRetain(pageConfig);
-        if ([_pageConfig valueForKey:@"hide_navi"] &&
-            [[_pageConfig valueForKey:@"hide_navi"] boolValue]) {
+        if ([pageConfig valueForKey:@"hide_navi"] &&
+            [[pageConfig valueForKey:@"hide_navi"] boolValue]) {
             _naviBarHidden = YES;
         } else {
             _naviBarHidden = NO;
         }
-        NSDictionary *navibarInfo = [_pageConfig valueForKey:@"navibar"];
+        NSDictionary *navibarInfo = [pageConfig valueForKey:@"navibar"];
         if (navibarInfo == nil ||[navibarInfo valueForKey:@"class"] == nil) {
             _naviBar = [[FusionNavigationBar alloc] initWithConfig:navibarInfo];
         } else {
@@ -67,8 +59,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        if (![_pageConfig objectForKey:@"no_gesture_navi"] ||
-            [[_pageConfig objectForKey:@"no_gesture_navi"] boolValue] == NO) {
+        if (![[self getPageConfig] objectForKey:@"no_gesture_navi"] ||
+            [[[self getPageConfig] objectForKey:@"no_gesture_navi"] boolValue] == NO) {
             Class gestureClass = NSClassFromString(@"UIScreenEdgePanGestureRecognizer");
             if (gestureClass == nil) {
                 gestureClass = [UIPanGestureRecognizer class];
@@ -92,13 +84,13 @@
         [self.view bringSubviewToFront:_naviBarHost];
     }
     [self.view bringSubviewToFront:_naviBar];
-    if (_tabBar) {
-        [self.view bringSubviewToFront:_tabBar];
+    if ([self getTabBar]) {
+        [self.view bringSubviewToFront:[self getTabBar]];
     }
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
-        if([_pageConfig valueForKey:@"status_bar_style"]) {
-            [[UIApplication sharedApplication] setStatusBarStyle:[[_pageConfig valueForKey:@"status_bar_style"] integerValue]];
+        if([[self getPageConfig] valueForKey:@"status_bar_style"]) {
+            [[UIApplication sharedApplication] setStatusBarStyle:[[[self getPageConfig] valueForKey:@"status_bar_style"] integerValue]];
         } else {
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         }
@@ -111,11 +103,11 @@
 - (void)updateSubviewsLayout {
     [_naviBar setFrame:CGRectMake(0, 0, self.view.frame.size.width, [_naviBar getNaviBarHeight])];
     [_naviBarHost setFrame:CGRectMake(0, 0, self.view.frame.size.width, [_naviBar getNaviBarHeight])];
-    if (_tabBar) {
-        [_tabBar setFrame:CGRectMake(0,
-                                     self.view.frame.size.height - [_tabBar getTabbarHeight],
-                                     self.view.frame.size.width,
-                                     [_tabBar getTabbarHeight])];
+    if ([self getTabBar]) {
+        [[self getTabBar] setFrame:CGRectMake(0,
+                                              self.view.frame.size.height - [[self getTabBar] getTabbarHeight],
+                                              self.view.frame.size.width,
+                                              [[self getTabBar] getTabbarHeight])];
     }
 }
 
@@ -136,53 +128,6 @@
     return UIInterfaceOrientationMaskAll;
 }
 
-- (NSDictionary *)getPageConfig {
-    return _pageConfig;
-}
-
-- (void)setPageName:(NSString *)pageName {
-    SafeRelease(_pageName);
-    _pageName = SafeRetain(pageName);
-}
-
-- (NSString *)getPageName {
-    return _pageName;
-}
-
-- (void)setPageNick:(NSString *)pageNick {
-    SafeRelease(_pageNick);
-    _pageNick = SafeRetain(pageNick);
-}
-
-- (NSString *)getPageNick {
-    return _pageNick;
-}
-
-- (void)setNaviAnimeType:(NSUInteger)animeType {
-    _naviAnimeType = animeType;
-}
-
-- (NSUInteger)getNaviAnimeType {
-    return _naviAnimeType;
-}
-
-- (void)setCallbackUrl:(NSURL *)callbackUrl {
-    SafeRelease(_callbackUrl);
-    _callbackUrl = SafeRetain(callbackUrl);
-}
-
-- (NSURL*)getCallbackUrl {
-    return _callbackUrl;
-}
-
-- (void)setNavigator:(FusionPageNavigator *)navigator {
-    _navigator = navigator;
-}
-
-- (FusionPageNavigator *)getNavigator {
-    return _navigator;
-}
-
 - (void)setPrevSnapView:(UIView *)prevSnapView {
     SafeRelease(_prevSnapView);
     _prevSnapView = SafeRetain(prevSnapView);
@@ -199,15 +144,6 @@
 
 - (UIView *)getPrevMaskView {
     return _prevMaskView;
-}
-
-- (void)setTabBar:(FusionTabBar *)tabBar {
-    SafeRelease(_tabBar);
-    _tabBar = SafeRetain(tabBar);
-    [self.view addSubview:_tabBar];
-}
-- (FusionTabBar *)getTabBar {
-    return _tabBar;
 }
 
 #pragma Reuse
@@ -264,7 +200,7 @@
 }
 
 - (void)onTriggerPanGesture:(UIPanGestureRecognizer*)recognizer {
-    CGPoint pos = [recognizer locationInView:_navigator.view];
+    CGPoint pos = [recognizer locationInView:[self getNavigator].view];
     
     switch ([recognizer state]) {
         case UIGestureRecognizerStateBegan: {
@@ -297,7 +233,7 @@
                 NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
                 CGFloat detal = now - _startTimestamp;
                 _speed = CGPointMake((pos.x - _startPosition.x)/detal, (pos.y - _startPosition.y)/detal);
-                [_manualAnime updateProcess:1.0 - pos.x / _navigator.view.frame.size.width];
+                [_manualAnime updateProcess:1.0 - pos.x / [self getNavigator].view.frame.size.width];
             }
         }
             break;
@@ -316,19 +252,11 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    objc_removeAssociatedObjects(self);
-    _navigator = nil;
-    SafeRelease(_pageName);
-    SafeRelease(_pageNick);
-    SafeRelease(_callbackUrl);
-    SafeRelease(_pageConfig);
     SafeRelease(_prevSnapView);
     SafeRelease(_prevMaskView);
     SafeRelease(_manualAnime);
     SafeRelease(_naviBar);
     SafeRelease(_naviBarHost);
-    SafeRelease(_tabBar);
     SafeSuperDealloc(super);
 }
 @end
