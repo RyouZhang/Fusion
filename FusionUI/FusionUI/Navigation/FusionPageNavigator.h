@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class FusionNaviBar;
+@class FusionNavigationBar;
 @class FusionTabBar;
 @class FusionPageMessage;
 @class FusionPageController;
@@ -40,9 +40,6 @@
 @optional
 - (void)setTabBar:(FusionTabBar *)tabBar;
 - (FusionTabBar *)getTabBar;
-
-- (void)setNaviBar:(FusionNaviBar *)naviBar;
-- (FusionNaviBar *)getNaviBar;
 
 - (void)updateSubviewsLayout;
 
@@ -89,7 +86,6 @@
     
     CGFloat                 _cornerRadius;
 
-    UINavigationBar         *_naviBar;
     UIView                  *_containerView;
     UIView                  *_maskView;
     

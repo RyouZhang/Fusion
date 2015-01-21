@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class FusionNaviBar;
+@class FusionNavigationBar;
 @class FusionTabBar;
 @class FusionPageNavigator;
 @class FusionNaviAnime;
@@ -19,6 +19,7 @@
 @interface FusionPageController : UIViewController<IFusionPageProtocol,UIGestureRecognizerDelegate> {
 @protected
     BOOL                _naviBarHidden;
+    FusionNavigationBar *_naviBar;
     FusionTabBar        *_tabBar;
 @private
 //for manual navi anime

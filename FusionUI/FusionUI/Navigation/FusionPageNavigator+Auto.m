@@ -9,7 +9,6 @@
 #import "FusionPageNavigator+Auto.h"
 #import "FusionPageNavigator+Internal.h"
 #import "FusionPageNavigator+NaviAnime.h"
-#import "FusionPageNavigator+NaviBar.h"
 #import "FusionPageNavigator+Tab.h"
 #import "FusionPageMessage.h"
 #import "Anime/FusionNaviAnimeHelper.h"
