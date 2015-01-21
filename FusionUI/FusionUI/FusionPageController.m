@@ -10,6 +10,7 @@
 #import "Navigation/FusionPageNavigator.h"
 #import "Navigation/FusionPageNavigator+Manual.h"
 #import "Navigation/FusionTabBar.h"
+#import "FusionNavigationBar.h"
 #import "Navigation/Anime/FusionNaviAnimeHelper.h"
 #import "Navigation/Anime/FusionNaviAnime.h"
 #import "FusionPageMessage.h"
@@ -42,12 +43,23 @@
         } else {
             _naviBarHidden = NO;
         }
+        NSDictionary *navibarInfo = [_pageConfig valueForKey:@"navibar"];
+        if (navibarInfo == nil ||[navibarInfo valueForKey:@"class"] == nil) {
+            _naviBar = [[FusionNavigationBar alloc] initWithConfig:navibarInfo];
+        } else {
+            _naviBar = [[NSClassFromString([navibarInfo valueForKey:@"class"]) alloc] initWithConfig:navibarInfo];
+        }
+        [_naviBar setHidden:_naviBarHidden];
+        [_naviBar setClipsToBounds:YES];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (_naviBar) {
+        [self.view addSubview:_naviBar];
+    }
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         if (![_pageConfig objectForKey:@"no_gesture_navi"] ||
             [[_pageConfig objectForKey:@"no_gesture_navi"] boolValue] == NO) {
@@ -70,6 +82,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.view bringSubviewToFront:_naviBar];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         if([_pageConfig valueForKey:@"status_bar_style"]) {
             [[UIApplication sharedApplication] setStatusBarStyle:[[_pageConfig valueForKey:@"status_bar_style"] integerValue]];
@@ -83,6 +96,9 @@
 }
 
 - (void)updateSubviewsLayout {
+    if (_naviBar) {
+        [_naviBar setFrame:CGRectMake(0, 0, self.view.frame.size.width, [_naviBar getNaviBarHeight])];
+    }
     if (_tabBar) {
         [_tabBar setFrame:CGRectMake(0,
                                      self.view.frame.size.height - [_tabBar getTabbarHeight],

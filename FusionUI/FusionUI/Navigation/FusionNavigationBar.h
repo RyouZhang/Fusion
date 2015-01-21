@@ -11,11 +11,17 @@
 
 @interface FusionNavigationBar : UIView {
 @protected
-    UIView      *_leftView;
-    UIView      *_rightView;
-    UIView      *_centerView;
+    UIView          *_leftView;
+    UIView          *_rightView;
+    UIView          *_centerView;
+    
+    NSDictionary    *_config;
 }
 @property(retain, atomic)UIView *leftView;
 @property(retain, atomic)UIView *rightView;
 @property(retain, atomic)UIView *centerView;
+
+- (id)initWithConfig:(NSDictionary *)config;
+
+- (CGFloat)getNaviBarHeight;
 @end
