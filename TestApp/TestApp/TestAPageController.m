@@ -85,11 +85,11 @@
     [_blurImageView setClipsToBounds:YES];
     [_blurImageView setContentMode:UIViewContentModeTop];
     
-    _scrollView = [UIScrollView new];
-    [_scrollView setUserInteractionEnabled:NO];
-    [self.view addSubview:_scrollView];
+//    _scrollView = [UIScrollView new];
+//    [_scrollView setUserInteractionEnabled:NO];
+//    [self.view addSubview:_scrollView];
     
-    [self.view addGestureRecognizer:_scrollView.panGestureRecognizer];
+//    [self.view addGestureRecognizer:_scrollView.panGestureRecognizer];
     
 //    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
 //    [button setTitle:@"GO" forState:UIControlStateNormal];
@@ -98,32 +98,32 @@
 //    [button addTarget:self
 //               action:@selector(onTapButton:)
 //     forControlEvents:UIControlEventTouchUpInside];
-    {
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Go"
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:self
-                                                                action:@selector(onTapButton:)];
-        [self.navigationItem setLeftBarButtonItem:item];
-    }
-    {
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Show"
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:self
-                                                                action:@selector(onShowBlurAnime:)];
-        [self.navigationItem setRightBarButtonItem:item];
-    }
+//    {
+//        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Go"
+//                                                                 style:UIBarButtonItemStylePlain
+//                                                                target:self
+//                                                                action:@selector(onTapButton:)];
+//        [self.navigationItem setLeftBarButtonItem:item];
+//    }
+//    {
+//        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Show"
+//                                                                 style:UIBarButtonItemStylePlain
+//                                                                target:self
+//                                                                action:@selector(onShowBlurAnime:)];
+//        [self.navigationItem setRightBarButtonItem:item];
+//    }
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         _blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
         
-        _vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:_blurEffect];
-        _vibrancylView = [[UIVisualEffectView alloc] initWithEffect:_vibrancyEffect];
+//        _vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:_blurEffect];
+//        _vibrancylView = [[UIVisualEffectView alloc] initWithEffect:_vibrancyEffect];
         
         _visualView = [[UIVisualEffectView alloc] initWithEffect:_blurEffect];
-        [_scrollView addSubview:_visualView];
+        [self.view addSubview:_visualView];
     }
 
-    [self.navigationItem setTitle:@"DADSADA"];
+//    [self.navigationItem setTitle:@"DADSADA"];
 //    UILabel *label = [UILabel new];
 //    [label.layer setBorderWidth:1.0];
 //    [label.layer setBorderColor:[UIColor grayColor].CGColor];
@@ -180,7 +180,7 @@
     [_bgImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [_scrollView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 //    [_vibrancylView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [_visualView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [_visualView setFrame:CGRectMake(0, 100, self.view.frame.size.width, 100)];
     [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height * 2.0)];
     [_scrollView setContentOffset:CGPointMake(0, self.view.frame.size.height)];
 }

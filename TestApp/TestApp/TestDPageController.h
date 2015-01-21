@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <FusionUI/FusionUI.h>
 
-@interface TestDPageController : UIViewController<IFusionPageProtocol> {
+@interface TestDPageController : UIViewController {
 }
 @end

@@ -9,13 +9,16 @@
 #import "FusionNavigationBar.h"
 #import "SafeARC.h"
 
+@interface FusionNavigationBar() {
+}
+@end
+
 @implementation FusionNavigationBar
 @synthesize leftView = _leftView, rightView = _rightView, centerView = _centerView;
 - (id)initWithConfig:(NSDictionary *)config {
     self = [super init];
     if (self) {
-        _config = SafeRetain(config);
-        [self setBackgroundColor:[UIColor whiteColor]];
+        _config = SafeRetain(config);        
     }
     return self;
 }
@@ -29,6 +32,10 @@
     } else {
         return 64.0;
     }
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
 }
 
 - (void)dealloc {

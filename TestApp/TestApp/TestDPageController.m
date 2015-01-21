@@ -10,14 +10,6 @@
 #import "SafeARC.h"
 
 @interface TestDPageController() {
-@private
-    NSDictionary    *_pageConfig;
-    NSString        *_pageName;
-    NSString        *_pageNick;
-    NSURL           *_callbackUrl;
-    NSUInteger      _naviAnimeType;
-    
-    __unsafe_unretained FusionPageNavigator *_naviagtor;
 }
 @end
 
@@ -46,81 +38,8 @@
     [[self getNavigator] poptoPage:message];
 }
 
-#pragma IFusionPageProtocol
-- (id)initWithConfig:(NSDictionary *)pageConfig {
-    self = [super init];
-    if (self) {
-        _pageConfig = SafeRetain(pageConfig);
-    }
-    return self;
-}
-
-- (NSDictionary *)getPageConfig {
-    return _pageConfig;
-}
-
-- (void)setNaviAnimeType:(NSUInteger)animeType {
-    _naviAnimeType = animeType;
-}
-
-- (NSUInteger)getNaviAnimeType {
-    return _naviAnimeType;
-}
-
-- (void)setPageName:(NSString *)pageName {
-    SafeRelease(_pageName);
-    _pageName = SafeRetain(pageName);
-}
-
-- (NSString *)getPageName {
-    return _pageName;
-}
-
-- (void)setPageNick:(NSString *)pageNick {
-    SafeRelease(_pageNick);
-    _pageNick = pageNick;
-}
-
-- (NSString *)getPageNick {
-    return _pageNick;
-}
-
-- (void)setCallbackUrl:(NSURL *)callbackUrl {
-    SafeRelease(_callbackUrl);
-    _callbackUrl = SafeRetain(callbackUrl);
-}
-
-- (NSURL*)getCallbackUrl {
-    return _callbackUrl;
-}
-
-- (void)setNavigator:(FusionPageNavigator *)navigator {
-    _naviagtor = navigator;
-}
-
-- (FusionPageNavigator *)getNavigator {
-    return _naviagtor;
-}
-
-- (void)processPageCommand:(NSString *)command args:(NSDictionary *)args {
-    
-}
-
-- (void)setTabBar:(FusionTabBar *)tabBar {
-    assert(NO);
-}
-
-- (FusionTabBar *)getTabBar {
-    return nil;
-}
-
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    _naviagtor = nil;
-    SafeRelease(_pageNick);
-    SafeRelease(_pageName);
-    SafeRelease(_callbackUrl);
-    SafeRelease(_pageConfig);
     SafeSuperDealloc(super);
 }
 @end

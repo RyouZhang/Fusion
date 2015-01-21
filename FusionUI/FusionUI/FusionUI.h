@@ -14,6 +14,8 @@
 #import <FusionUI/FusionPageNavigator+Manual.h>
 #import <FusionUI/FusionPageController.h>
 #import <FusionUI/FusionTabBar.h>
+#import <FusionUI/FusionNavigationBar.h>
+#import <FusionUI/UIViewController+Fusion.h>
 #import <FusionUI/FusionNaviAnimeHelper.h>
 #import <FusionUI/FusionNaviAnime.h>
 #import <FusionUI/FusionNavi2DAnime.h>

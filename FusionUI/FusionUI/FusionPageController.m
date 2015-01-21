@@ -24,6 +24,8 @@
     NSUInteger      _naviAnimeType;
     NSURL           *_callbackUrl;
     
+    UIVisualEffectView  *_naviBarHost;
+    
     UIView              *_prevSnapView;
     UIView              *_prevMaskView;
     
@@ -51,15 +53,19 @@
         }
         [_naviBar setHidden:_naviBarHidden];
         [_naviBar setClipsToBounds:YES];
+        [self.view addSubview:_naviBar];
+        
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+            _naviBarHost = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+            [_naviBarHost setHidden:_naviBarHidden];
+            [self.view addSubview:_naviBarHost];
+        }
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (_naviBar) {
-        [self.view addSubview:_naviBar];
-    }
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         if (![_pageConfig objectForKey:@"no_gesture_navi"] ||
             [[_pageConfig objectForKey:@"no_gesture_navi"] boolValue] == NO) {
@@ -82,7 +88,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if (_naviBarHost) {
+        [self.view bringSubviewToFront:_naviBarHost];
+    }
     [self.view bringSubviewToFront:_naviBar];
+    if (_tabBar) {
+        [self.view bringSubviewToFront:_tabBar];
+    }
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         if([_pageConfig valueForKey:@"status_bar_style"]) {
             [[UIApplication sharedApplication] setStatusBarStyle:[[_pageConfig valueForKey:@"status_bar_style"] integerValue]];
@@ -96,9 +109,8 @@
 }
 
 - (void)updateSubviewsLayout {
-    if (_naviBar) {
-        [_naviBar setFrame:CGRectMake(0, 0, self.view.frame.size.width, [_naviBar getNaviBarHeight])];
-    }
+    [_naviBar setFrame:CGRectMake(0, 0, self.view.frame.size.width, [_naviBar getNaviBarHeight])];
+    [_naviBarHost setFrame:CGRectMake(0, 0, self.view.frame.size.width, [_naviBar getNaviBarHeight])];
     if (_tabBar) {
         [_tabBar setFrame:CGRectMake(0,
                                      self.view.frame.size.height - [_tabBar getTabbarHeight],
@@ -314,6 +326,8 @@
     SafeRelease(_prevSnapView);
     SafeRelease(_prevMaskView);
     SafeRelease(_manualAnime);
+    SafeRelease(_naviBar);
+    SafeRelease(_naviBarHost);
     SafeRelease(_tabBar);
     SafeSuperDealloc(super);
 }

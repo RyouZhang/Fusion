@@ -11,8 +11,10 @@
 		201D31DA1A66616600C53B0F /* FusionScrollL2RAnime.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D31D81A66616600C53B0F /* FusionScrollL2RAnime.m */; };
 		201D31DD1A6661EE00C53B0F /* FusionScrollR2LAnime.h in Headers */ = {isa = PBXBuildFile; fileRef = 201D31DB1A6661EE00C53B0F /* FusionScrollR2LAnime.h */; };
 		201D31DE1A6661EE00C53B0F /* FusionScrollR2LAnime.m in Sources */ = {isa = PBXBuildFile; fileRef = 201D31DC1A6661EE00C53B0F /* FusionScrollR2LAnime.m */; };
-		205758921A6F889D00C14813 /* FusionNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 205758901A6F889D00C14813 /* FusionNavigationBar.h */; };
+		205758921A6F889D00C14813 /* FusionNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 205758901A6F889D00C14813 /* FusionNavigationBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		205758931A6F889D00C14813 /* FusionNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 205758911A6F889D00C14813 /* FusionNavigationBar.m */; };
+		205758A11A6FC33A00C14813 /* UIViewController+Fusion.h in Headers */ = {isa = PBXBuildFile; fileRef = 2057589F1A6FC33A00C14813 /* UIViewController+Fusion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		205758A21A6FC33A00C14813 /* UIViewController+Fusion.m in Sources */ = {isa = PBXBuildFile; fileRef = 205758A01A6FC33A00C14813 /* UIViewController+Fusion.m */; };
 		206B11BC1A66272C0075C1D6 /* FusionPageNavigator+Tab.h in Headers */ = {isa = PBXBuildFile; fileRef = 206B11BA1A66272C0075C1D6 /* FusionPageNavigator+Tab.h */; };
 		206B11BD1A66272C0075C1D6 /* FusionPageNavigator+Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 206B11BB1A66272C0075C1D6 /* FusionPageNavigator+Tab.m */; };
 		20969CE01A63861B00E9C377 /* FusionUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 20969CDF1A63861B00E9C377 /* FusionUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -58,6 +60,8 @@
 		201D31DC1A6661EE00C53B0F /* FusionScrollR2LAnime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FusionScrollR2LAnime.m; sourceTree = "<group>"; };
 		205758901A6F889D00C14813 /* FusionNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FusionNavigationBar.h; sourceTree = "<group>"; };
 		205758911A6F889D00C14813 /* FusionNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FusionNavigationBar.m; sourceTree = "<group>"; };
+		2057589F1A6FC33A00C14813 /* UIViewController+Fusion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Fusion.h"; sourceTree = "<group>"; };
+		205758A01A6FC33A00C14813 /* UIViewController+Fusion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Fusion.m"; sourceTree = "<group>"; };
 		206B11BA1A66272C0075C1D6 /* FusionPageNavigator+Tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FusionPageNavigator+Tab.h"; sourceTree = "<group>"; };
 		206B11BB1A66272C0075C1D6 /* FusionPageNavigator+Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FusionPageNavigator+Tab.m"; sourceTree = "<group>"; };
 		20969CDA1A63861B00E9C377 /* FusionUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FusionUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +173,8 @@
 				20969D001A63871700E9C377 /* FusionTabBar.m */,
 				205758901A6F889D00C14813 /* FusionNavigationBar.h */,
 				205758911A6F889D00C14813 /* FusionNavigationBar.m */,
+				2057589F1A6FC33A00C14813 /* UIViewController+Fusion.h */,
+				205758A01A6FC33A00C14813 /* UIViewController+Fusion.m */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -227,14 +233,15 @@
 				201D31D91A66616600C53B0F /* FusionScrollL2RAnime.h in Headers */,
 				20969CF91A63869E00E9C377 /* FusionPageController.h in Headers */,
 				206B11BC1A66272C0075C1D6 /* FusionPageNavigator+Tab.h in Headers */,
+				205758921A6F889D00C14813 /* FusionNavigationBar.h in Headers */,
 				20969D2C1A63A14500E9C377 /* FusionSlideL2RAnime.h in Headers */,
 				20969D1C1A63A01000E9C377 /* FusionNavi2DAnime.h in Headers */,
 				20969DCD1A64243B00E9C377 /* FusionPageNavigator+Manual.h in Headers */,
 				20969D891A63DC7D00E9C377 /* FusionPageNavigator+NaviAnime.h in Headers */,
+				205758A11A6FC33A00C14813 /* UIViewController+Fusion.h in Headers */,
 				20969D141A639E7F00E9C377 /* FusionPageNavigator+Internal.h in Headers */,
 				20969D301A63A22100E9C377 /* FusionPageNavigator+Auto.h in Headers */,
 				20969D181A639FC400E9C377 /* SPTransitions.h in Headers */,
-				205758921A6F889D00C14813 /* FusionNavigationBar.h in Headers */,
 				20969CE01A63861B00E9C377 /* FusionUI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,6 +328,7 @@
 				20969D861A63AB2000E9C377 /* FusionPageMessage.m in Sources */,
 				20969D151A639E7F00E9C377 /* FusionPageNavigator+Internal.m in Sources */,
 				201D31DE1A6661EE00C53B0F /* FusionScrollR2LAnime.m in Sources */,
+				205758A21A6FC33A00C14813 /* UIViewController+Fusion.m in Sources */,
 				205758931A6F889D00C14813 /* FusionNavigationBar.m in Sources */,
 				20969D311A63A22100E9C377 /* FusionPageNavigator+Auto.m in Sources */,
 				20969D2D1A63A14500E9C377 /* FusionSlideL2RAnime.m in Sources */,
@@ -435,10 +443,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Volumes/HardDisk/TestZone/201501/Fusion2015/Workspace/DerivedData/FusionWorkspace/Build/Products/Debug-iphoneos",
 				);
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				INFOPLIST_FILE = FusionUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -455,10 +465,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Volumes/HardDisk/TestZone/201501/Fusion2015/Workspace/DerivedData/FusionWorkspace/Build/Products/Debug-iphoneos",
 				);
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				INFOPLIST_FILE = FusionUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
