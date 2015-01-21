@@ -155,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				20969D071A63883800E9C377 /* Anime */,
+				205758901A6F889D00C14813 /* FusionNavigationBar.h */,
+				205758911A6F889D00C14813 /* FusionNavigationBar.m */,
 				20969D831A63AB2000E9C377 /* FusionPageMessage.h */,
 				20969D841A63AB2000E9C377 /* FusionPageMessage.m */,
 				20969D031A63878800E9C377 /* FusionPageNavigator.h */,
@@ -171,8 +173,6 @@
 				206B11BB1A66272C0075C1D6 /* FusionPageNavigator+Tab.m */,
 				20969CFF1A63871700E9C377 /* FusionTabBar.h */,
 				20969D001A63871700E9C377 /* FusionTabBar.m */,
-				205758901A6F889D00C14813 /* FusionNavigationBar.h */,
-				205758911A6F889D00C14813 /* FusionNavigationBar.m */,
 				2057589F1A6FC33A00C14813 /* UIViewController+Fusion.h */,
 				205758A01A6FC33A00C14813 /* UIViewController+Fusion.m */,
 			);

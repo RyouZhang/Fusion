@@ -10,11 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @class FusionNavigationBar;
-@class FusionTabBar;
-@class FusionPageNavigator;
 @class FusionNaviAnime;
-
-@protocol IFusionPageProtocol;
 
 @interface FusionPageController : UIViewController<UIGestureRecognizerDelegate> {
 @protected
